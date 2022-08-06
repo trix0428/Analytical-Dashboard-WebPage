@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.esm.js">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <div class="logo_name"><img src="./assets/yesdoc-logo.png" width="50%" alt=""></div>
+      <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="#">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+        <span class="tooltip">Dashboard</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Patient</span>
+        </a>
+        <span class="tooltip">Patient</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bxs-user-badge'></i>
+          <span class="links_name">Staff</span>
+        </a>
+        <span class="tooltip">Staff</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-purchase-tag-alt'></i>
+          <span class="links_name">Treatment</span>
+        </a>
+        <span class="tooltip">Treatment</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-door-open'></i>
+          <span class="links_name">Rooms</span>
+        </a>
+        <span class="tooltip">Rooms</span>
+      </li>
+      <ul class="nav-list2">
+        <li>
+          <a href="#">
+            <i class='bx bx-cog'></i>
+            <span class="links_name">Settings</span>
+          </a>
+          <span class="tooltip">Settings</span>
+        </li>
+        <li>
+          <a href="#">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Logout</span>
+          </a>
+          <span class="tooltip">Logout</span>
+        </li>
+      </ul>
+    </ul>
+  </div>
+  <section class="home-section">
+    <h2>Dashboard</h2>
+    <div class="dashboard-main-container">
+      <div class="grid-container">
+        <div class="container first">
+          <div class="first-col-container">
+            <div class="sub-container one">
+              <h4>Total Patient</h4>
+              <h2 class="number-data">26</h2>
+              <p>as of now</p>
+            </div>
+            <div class="sub-container two">
+              <h4>Available Staff</h4>
+              <h2 class="number-data">10</h2>
+              <p>out of 35</p>
+            </div>
+            <div class="sub-container three">
+              <h4>Available Room</h4>
+              <h2 class="number-data">14</h2>
+              <p>out of 25</p>
+            </div>
+          </div>
+          <div class="second-col-container">
+            <div class="analysis staff">
+              <h5>Staff Analysis</h5>
+              <div class="donut-chart">
+                <!-- <canvas id="mycanvas-one" width="200" height="180"></canvas> -->
+                <div class="canvas-cont">
+                  <canvas id="myChart-one" width="200" height="120"></canvas>
+                </div>
+                <script>
+                  var xValues = ["Available", "On Duty", "On Leave"];
+                  var yValues = [10, 13, 12];
+                  var barColors = [
+                    "#355C7D",
+                    "#FF7682",
+                    "#C56D86"
+                  ];
+                  new Chart("myChart-one", {
+                    type: "doughnut",
+                    data: {
+                      labels: xValues,
+                      datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                      }]
+                    },
+                    options: {
+                      legend: { display: false },
+                    }
+                  });
+                </script>
+                <div class="legend one">
+                  <h5>Legend</h5>
+                  <table>
+                    <tr>
+                      <td><span class="dot one"></span></td>
+                      <td>
+                        <p>Available</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="dot two"></span></td>
+                      <td>
+                        <p>On Duty</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="dot three"></span></td>
+                      <td>
+                        <p>On Leave</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="analysis room">
+              <h5>Room Analysis</h5>
+              <div class="donut-chart">
+                <div class="canvas-cont">
+                  <canvas id="myChart-two" width="200" height="120"></canvas>
+                </div>
+                <script>
+                  var xValues = ["Available", "On Duty", "On Leave"];
+                  var yValues = [10, 13, 12];
+                  var barColors = [
+                    "#355C7D",
+                    "#FF7682",
+                    "#C56D86"
+                  ];
+
+                  new Chart("myChart-two", {
+                    type: "doughnut",
+                    data: {
+                      labels: xValues,
+                      datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                      }]
+                    },
+                    options: {
+                      legend: { display: false },
+                    }
+                  });
+                </script>
+
+                <div class="legend">
+                  <h5>Legend</h5>
+                  <table>
+                    <tr>
+                      <td><span class="dot one"></span></td>
+                      <td>
+                        <p>Available</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="dot two"></span></td>
+                      <td>
+                        <p>Occupied</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="dot three"></span></td>
+                      <td>
+                        <p>Unavailable</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+          <!-- THIRD ROW - PATIENT ANALYSIS  -->
+
+
+          <div class="third-col-container">
+            <div class="analysis patient">
+              <h5>Patient Admission Analysis</h5>
+              <div class="analysis-cont">
+                <div class="type daily">
+                  <h6>Daily</h6>
+                </div>
+                <div class="type weekly ">
+                  <h6>Weekly</h6>
+                </div>
+                <div class="type monthly">
+                  <h6>Monthly</h6>
+                </div>
+              </div>
+              <div class="bar-chart">
+                <div class="canvas-cont-last">
+                  <canvas id="bar-chartcanvas" width="400" height="150"></canvas>
+                </div>
+                <div class="canvas-cont-last2">
+                  <canvas id="bar-chartcanvas2" width="400" height="150"></canvas>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-stacked100@1.0.0"></script>
+                <script>
+                  Chart.register(ChartjsPluginStacked100.default);
+
+                  const data = {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                      label: 'Male',
+                      data: [8, 2, 15, 7, 17, 6, 13],
+                      backgroundColor: '#355C7D'
+                    },
+                    {
+                      label: 'Female',
+                      data: [23, 8, 19, 19, 13, 14, 5],
+                      backgroundColor: '#FF7682'
+                    },
+                    ]
+                  };
+                  const data2 = {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                      label: 'Inpatient',
+                      data: [10, 7, 12, 5, 12, 5, 4],
+                      backgroundColor: '#725A7A'
+                    },
+                    {
+                      label: 'Outpatient',
+                      data: [21, 3, 22, 21, 18, 14, 14],
+                      backgroundColor: '#C56D86'
+                    },
+                    ]
+                  };
+
+                  // config 
+                  const config = {
+                    type: 'bar',
+                    data,
+                    options: {
+
+                      plugins: {
+                        stacked100: {
+                          enable: true,
+                        }
+                      },
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  };
+
+                  const config2 = {
+                    type: 'bar',
+                    data: data2,
+                    options: {
+
+                      plugins: {
+                        stacked100: {
+                          enable: true,
+                        }
+                      },
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  };
+
+                  // render init block
+
+                  const myChart = new Chart(
+                    document.getElementById('bar-chartcanvas'),
+                    config
+                  );
+                  const myChart2 = new Chart(
+                    document.getElementById('bar-chartcanvas2'),
+                    config2
+                  );
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container second">
+          <div class="activity-panel">
+            <h5>Activity</h5>
+            <div class="activity-container">
+              <ul>
+                <table class="activity-ul">
+                  <tr>
+                    <td><i class='bx bxs-notepad'></i></td>
+                    <td><span class="act-data">Inpatient Admission</span></td>
+                    <td><span class="time-stamp">• 5s ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bxs-user-pin'></i></td>
+                    <td><span class="act-data">Staff on duty</span></td>
+                    <td><span class="time-stamp">• 3h ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bx-notepad'></i></td>
+                    <td><span class="act-data">Outpatient Admission</span></td>
+                    <td><span class="time-stamp">• 1m ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bxs-notepad'></i></td>
+                    <td><span class="act-data">Inpatient Admission</span></td>
+                    <td><span class="time-stamp">• 5m ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bx-user-pin'></i></td>
+                    <td><span class="act-data">Available Staff</span></td>
+                    <td><span class="time-stamp">• 23m ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bx-notepad'></i></td>
+                    <td><span class="act-data">Outpatient Admission</span></td>
+                    <td><span class="time-stamp">• 1h ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bxs-user-pin'></i></td>
+                    <td><span class="act-data">Staff on duty</span></td>
+                    <td><span class="time-stamp">• 3h ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bx-notepad'></i></td>
+                    <td><span class="act-data">Outpatient Admission</span></td>
+                    <td><span class="time-stamp">• 3h ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bxs-notepad'></i></td>
+                    <td><span class="act-data">Inpatient Admission</span></td>
+                    <td><span class="time-stamp">• 4h ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bx-user-pin'></i></td>
+                    <td><span class="act-data">Available Staff</span></td>
+                    <td><span class="time-stamp">• 5h ago</span></td>
+                  </tr>
+                  <tr>
+                    <td><i class='bx bx-notepad'></i></td>
+                    <td><span class="act-data">Outpatient Admission</span></td>
+                    <td><span class="time-stamp">• 6h ago</span></td>
+                  </tr>
+                </table>
+
+            </div>
+          </div>
+          <div class="treatment-panel">
+            <h5>Treatment Pricelist</h5>
+            <table style="width:100%">
+              <tr>
+                <th>Treatment Name</th>
+                <th>Price</th>
+                <th>Availability</th>
+                <th>View</th>
+              </tr>
+              <tr>
+                <td>Chemotherapy</td>
+                <td class="price">P 50,000.00</td>
+                <td>
+                  <div class="toggle-cont">
+                    <div class="toggle-btn" onclick="this.classList.toggle('active')">
+                      <div class="inner-circle"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="icon"><i class='bx bxs-show'></i></td>
+              </tr>
+              <tr>
+                <td>Urinalysis</td>
+                <td class="price">P 110.00</td>
+                <td>
+                  <div class="toggle-cont">
+                    <div class="toggle-btn" onclick="this.classList.toggle('active')">
+                      <div class="inner-circle"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="icon"><i class='bx bxs-show'></i></td>
+              </tr>
+              <td>Blood Transfusion</td>
+              <td class="price">P 3,000.00</td>
+              <td>
+                <div class="toggle-cont">
+                  <div class="toggle-btn" onclick="this.classList.toggle('active')">
+                    <div class="inner-circle"></div>
+                  </div>
+                </div>
+              </td>
+              <td class="icon"><i class='bx bxs-show'></i></td>
+              </tr>
+              <tr>
+                <td>Immunotherapy</td>
+                <td class="price">P 40,000.00</td>
+                <td>
+                  <div class="toggle-cont">
+                    <div class="toggle-btn" onclick="this.classList.toggle('active')">
+                      <div class="inner-circle"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="icon"><i class='bx bxs-show'></i></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("#btn");
+    let searchBtn = document.querySelector(".bx-search");
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+
+    searchBtn.addEventListener("click", () => { 
+      sidebar.classList.toggle("open");
+      menuBtnChange(); 
+    });
+    function menuBtnChange() {
+      if (sidebar.classList.contains("open")) {
+        closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else {
+        closeBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      }
+    }
+
+
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
